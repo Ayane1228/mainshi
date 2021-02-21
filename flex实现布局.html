@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+</head>
+
+<style>
+    .container{
+        display: flex;
+        min-height: 300px;
+    }
+    .left,.right{
+        /* 
+            flex 属性是 flex-grow、flex-shrink 和 flex-basis 属性的简写属性。 
+            flex-grow：弹性盒子放大的比率。
+            flex-shrink：弹性盒子缩小的比率
+            flex-basis：弹性盒子初始长度
+        */
+        flex: 0 0 200px;
+        height: 200px;
+        background-color: lightgreen;
+    }
+    .center{
+        /*  
+            flex：1
+            flex-grow、flex-shrink 和 flex-basis分别是1，1，0%
+            自动分配剩余空间
+         */
+        flex: 1;
+        min-width: 400px;
+        background-color: lightsalmon;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="left">left</div>
+        <div class="center">main</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>
