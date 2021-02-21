@@ -1,6 +1,6 @@
 ## HTML CSS3
 
-- 盒子水平和垂直居中的五大方案
+- ## 盒子水平和垂直居中的五大方案
 
   1. 基于定位(position)的三种方式：子绝父相,absolute:绝对；relative：相对
                  1.子盒子定位到父盒子的50%,50%,再使用transform属性使子盒子沿着X,Y轴偏移自己宽高的50%，需要浏览器支持transform属性
@@ -178,7 +178,7 @@
 
   
 
-- CSS中的盒模型
+- ## CSS中的盒模型
 
   有标准盒子模型、IE盒模型（怪异盒模型）、flex弹性盒模型。
 
@@ -200,7 +200,8 @@
 
 
 
-- 经典布局
+- ## 经典布局
+
   左右固定、中间自适应（圣杯布局、双飞翼布局）
 
   圣杯布局：
@@ -408,4 +409,24 @@
   </html>
   ```
 
-  
+
+
+- ## 移动端响应式布局的方案
+
+  -  media，一个页面，多个样式表
+
+    媒体查询,根据加载页面的宽度不同加载不同的css样式表。
+
+    ```css
+        <link rel="stylesheet" href="./index.css">
+        <link rel="stylesheet" href="./index_ipad.css" media="screen and (max-width:1200px)">
+        <link rel="stylesheet" href="./index_mobile.css" media="screen and (max-width:768px)">
+    ```
+
+  - rem，不同终端，不同页面。rem主要用在移动端，通过监测屏幕大小改变html的字体大小，从而实现自适应大小的效果。
+
+  - flex
+
+  - vh/vw
+
+    将视口宽/高度分为100份，1vh/1vw指1/100视口宽度/高度。
