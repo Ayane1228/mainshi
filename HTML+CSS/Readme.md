@@ -37,7 +37,9 @@
       <p>这是不无聊也不有趣的文字</p>
   ```
 
-  结果：![](D:\learn\mianshi\HTML+CSS\屏幕截图 2021-02-22 234921.png)
+  结果：https://github.com/Ayane1228/mainshi/blob/main/HTML%2BCSS/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202021-02-22%20234921.png。
+
+  ​	会在类名为`boring-text`的p标签后添加颜色为red，内容为<- 无聊!的`::after`元素。
 
 
 
