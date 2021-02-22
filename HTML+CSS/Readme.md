@@ -1,5 +1,116 @@
 ## HTML CSS3
 
+- ## HTML
+
+  ##### 1. Doctype作用，HTML5 为什么只需要写`<!DOCTYPE html>`
+
+  ​	Doctype:W3C规定这声明了该文档的html标准，html5使用了和以前不一样的标准。
+
+  ##### 2. 常用元素类型有那些
+
+  ​	行内元素（inline）：
+
+  ​		不能设置宽高，不会自动换行。有：`a`,`img`,`span`,`input`,`i`,`select(下拉标签)`等。
+
+  ​	块级元素（block）：
+
+  ​		最常见的标签，常用作其他元素的容器，会自动换行，多个块元素会自动从上到下自动排列。有：`div`,`ul`,`ol`,`p`,`li`,`header`,`footer`,`h1~h6`等。
+
+  ​	行内块元素（dispaly:inline-block）：
+
+  ​		兼有行内元素和块状元素的特点，能够设置宽高，但不会自动换行。	
+
+  ​	空元素（void）：br（换行符）` `hr（换行线）` `link（锚点）。指没有内容的标签。
+
+  ​	伪元素： `::after`,`::before`,`::first-line`。能够选择当前元素的后、前、和这些元素的第一行的**元素**。
+
+  ​		例子：
+
+  ```html
+      <style>
+          .boring-text::after {
+              content: "<- 无聊!";
+              color: red;
+              }
+      </style>
+      <p class="boring-text">这是些无聊的文字</p>
+      <p>这是不无聊也不有趣的文字</p>
+  ```
+
+  结果：![](D:\learn\mianshi\HTML+CSS\屏幕截图 2021-02-22 234921.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - ## 盒子水平和垂直居中的五大方案
 
   1. 基于定位(position)的三种方式：子绝父相,absolute:绝对；relative：相对
