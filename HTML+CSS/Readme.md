@@ -216,228 +216,201 @@ box-sizing: content-box|border-box|inherit:
 
 > 响应式网站设计是一个网站能够兼容多个终端，而不是为每一个终端做一个特定的版本。基本原理是通过媒体查询检测不同的设备屏幕尺寸做处理
 
-##### 9. 为什么要初始化CSS样式
-
-> 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对 `CSS` 初始化往往会出现浏览器之间的页面显示差异
-
-> 初始化样式会对 `SEO` 有一定的影响
-
-##### 10. CSS3有哪些新特性
-
-- 实现圆角`border-radius`，阴影`box-shadow`，边框图片`border-image`
-- 对文字加特效`text-shadow`，强制文本换行`word-wrap`，线性渐变`linear-gradient`
-- 实现旋转`transform:rotate(90deg)`,缩放`scale(0.85,0.90)`,`translate(0px,-30px)`定位,倾斜`skew(-9deg,0deg)`;
-- 增加了更多的CSS选择器、多背景、`rgba()`
-- 唯一引入的伪元素是`::selection`；
-- 实现媒体查询`@media`，多栏布局`flex`
-- 过渡`transition` 动画`animation`
-
-##### 11. ::before 和 :after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用
+##### 9. ::before 和 :after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用
 
 > 单冒号(:)用于`CSS3`伪类，双冒号(::)用于`CSS3`伪元素。（伪元素由双冒号和伪元素名称组成）,双冒号是在当前规范中引入的，用于区分伪类和伪元素
 
-##### 12. CSS优化、提高性能的方法有哪些
-
-- 移除空的`css`规则（Remove empty rules）
-- 正确使用`display`的属性
-- 不滥用浮动、`web`字体
-- 不声明过多的`font-size`
-- 不在选择符中使用`ID`标识符
-- 遵守盒模型规则
-- 尽量减少页面重排、重绘
-- 抽象提取公共样式，减少代码量
-
-##### 13. 重绘和回流
+##### 10. 重绘和回流
 
 [重绘和回流](https://juejin.im/post/5a9923e9518825558251c96a)
 
-##### 14. flex布局
+##### 12. flex布局
 
 [flex布局教程--阮一峰](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
-##### 15. css预处理器
+##### 13. css预处理器
 
 提供了一种`css`的书写方式，常见的就是 [SAAS文档](http://sass.bootcss.com/docs/sass-reference/) 和 [LESS文档](https://less.bootcss.com/)
 
 
 
-- ## 盒子水平和垂直居中的五大方案
+## 盒子水平和垂直居中的五大方案
 
-  1. 基于定位(position)的三种方式：子绝父相,absolute:绝对；relative：相对
-                 1.子盒子定位到父盒子的50%,50%,再使用transform属性使子盒子沿着X,Y轴偏移自己宽高的50%，需要浏览器支持transform属性
-                 2.子盒子定位到父盒子的50%,50%，再使用margin值进行偏移：margin-top：-50px；margin-left:-50px,需要知道子盒子的具体宽高
-                 3.设置top、right、bottom、left均为0，利用margin:auto;设置margin值使得居中,需要子盒子有具体的宽高
+1. 基于定位(position)的三种方式：子绝父相,`position:absolute`:绝对定位；`position:relative`：相对定位。
+               1.子盒子定位到父盒子的50%,50%,再使用transform属性使子盒子沿着X,Y轴偏移自己宽高的50%，需要浏览器支持transform属性
+               2.子盒子定位到父盒子的50%,50%，再使用margin值进行偏移：margin-top：-50px；margin-left:-50px,需要知道子盒子的具体宽高
+               3.设置top、right、bottom、left均为0，利用margin:auto;设置margin值使得居中,需要子盒子有具体的宽高
 
-  2. flex:给父元素设置display：flex，将父盒子变为弹性容器，再设置弹性子元素的对齐方式：
+2. flex:给父元素设置display：flex，将父盒子变为弹性容器，再设置弹性子元素的对齐方式：
 
-     设置主轴线对齐方式:justify-content：center;设置侧轴对齐方式align-items：center；
+   设置主轴线对齐方式:justify-content：center;设置侧轴对齐方式align-items：center；
 
-  3. Javascript方式: 
+3. Javascript方式: 
 
-     ​    获取父盒子、子盒子的宽高，再使用定位，将子盒子定位到到中央:top、left均为(父盒子的宽高减去子盒子的宽高的长度)/2
+   ​    获取父盒子、子盒子的宽高，再使用定位，将子盒子定位到到中央:top、left均为(父盒子的宽高减去子盒子的宽高的长度)/2
 
-  4. table-cell:将父元素设置为单元格，子元素设置为inline-block
-             将父元素设置为table-cell，设置对齐方式；将子元素设置为inline-block
-             要求父元素必须要有固定宽高，不常用
+4. table-cell:将父元素设置为单元格，子元素设置为inline-block
+           将父元素设置为table-cell，设置对齐方式；将子元素设置为inline-block
+           要求父元素必须要有固定宽高，不常用
 
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-      <style>
-          /* 
-              水平垂直居中：
-              基于定位(position)的三种方式：
-                  子绝父相,absolute:绝对；relative：相对
-                  1.子盒子定位到父盒子的50%,50%,再使用transform属性使子盒子沿着X,Y轴偏移自己宽高的50%，需要浏览器支持transform属性
-                  2.子盒子定位到父盒子的50%,50%，再使用margin值进行偏移：margin-top：-50px；margin-left:-50px,需要知道子盒子的具体宽高
-                  3.设置top、right、bottom、left均为0，利用margin:auto;设置margin值使得居中,需要子盒子有具体的宽高
-          */
-  
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            水平垂直居中：
+            基于定位(position)的三种方式：
+                子绝父相,absolute:绝对；relative：相对
+                1.子盒子定位到父盒子的50%,50%,再使用transform属性使子盒子沿着X,Y轴偏移自己宽高的50%，需要浏览器支持transform属性
+                2.子盒子定位到父盒子的50%,50%，再使用margin值进行偏移：margin-top：-50px；margin-left:-50px,需要知道子盒子的具体宽高
+                3.设置top、right、bottom、left均为0，利用margin:auto;设置margin值使得居中,需要子盒子有具体的宽高
+        */
+
+        /* .big{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: aqua;
+            position: relative;
+        }
+        .small{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        } */
+        /* .big{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: aqua;
+            position: relative;
+        }
+        .small{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        } */
+        /* .big{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: aqua;
+            position: relative;
+        }
+        .small{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        } */
+        
+
+        /* flex:
+                给父元素设置display：flex，将父盒子变为弹性容器，再设置弹性子元素的对齐方式：
+                设置主轴线对齐方式:justify-content：center;设置侧轴对齐方式align-items：center；
+            移动端常用,有兼容性问题。
+        */
+        /* .big{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+        }
+        .small{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        } */
+         
+        /* 
+            Javascript方式: 
+            获取父盒子、子盒子的宽高，再使用定位，将子盒子定位到到中央:top、left均为(父盒子的宽高减去子盒子的宽高的长度)/2
+        */
+         /*
+          .big{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            position: relative;
+        }
+        .small{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }        */
+
+        /* table-cell:将父元素设置为单元格，子元素设置为inline-block
+            将父元素设置为table-cell，设置对齐方式；将子元素设置为inline-block
+            要求父元素必须要有固定宽高，不常用
+        */                 
           /* .big{
-              width: 500px;
-              height: 500px;
-              margin: 100px auto;
-              background-color: aqua;
-              position: relative;
-          }
-          .small{
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%,-50%);
-              width: 100px;
-              height: 100px;
-              background-color: red;
-          } */
-          /* .big{
-              width: 500px;
-              height: 500px;
-              margin: 100px auto;
-              background-color: aqua;
-              position: relative;
-          }
-          .small{
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              margin-top: -50px;
-              margin-left: -50px;
-              width: 100px;
-              height: 100px;
-              background-color: red;
-          } */
-          /* .big{
-              width: 500px;
-              height: 500px;
-              margin: 100px auto;
-              background-color: aqua;
-              position: relative;
-          }
-          .small{
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              margin: auto;
-              width: 100px;
-              height: 100px;
-              background-color: red;
-          } */
-          
-  
-          /* flex:
-                  给父元素设置display：flex，将父盒子变为弹性容器，再设置弹性子元素的对齐方式：
-                  设置主轴线对齐方式:justify-content：center;设置侧轴对齐方式align-items：center；
-              移动端常用,有兼容性问题。
-          */
-          /* .big{
-              width: 500px;
-              height: 500px;
-              margin: 100px auto;
-              background-color: aqua;
-              display: flex;
-              justify-content: center;
-              align-items: center;    
-          }
-          .small{
-              width: 100px;
-              height: 100px;
-              background-color: red;
-          } */
-           
-          /* 
-              Javascript方式: 
-              获取父盒子、子盒子的宽高，再使用定位，将子盒子定位到到中央:top、left均为(父盒子的宽高减去子盒子的宽高的长度)/2
-          */
-           /*
-            .big{
-              width: 500px;
-              height: 500px;
-              background-color: aqua;
-              position: relative;
-          }
-          .small{
-              position: absolute;
-              width: 100px;
-              height: 100px;
-              background-color: red;
-          }        */
-  
-          /* table-cell:将父元素设置为单元格，子元素设置为inline-block
-              将父元素设置为table-cell，设置对齐方式；将子元素设置为inline-block
-              要求父元素必须要有固定宽高，不常用
-          */                 
-            /* .big{
-              width: 500px;
-              height: 500px;
-              background-color: aqua;
-              display: table-cell;
-              vertical-align: middle;
-              text-align: center;
-          }
-          .small{
-              display: inline-block;
-              width: 100px;
-              height: 100px;
-              background-color: red;
-          }        */
-      </style>
-  </head>
-  <body>
-      <div class="big">
-          <div class="small">
-  
-          </div>
-      </div>
-      <script>
-          /* 
-              Javascript方式: 
-              获取父盒子、子盒子的宽高，再使用定位，将子盒子定位到到中央:top、left均为(父盒子的宽高减去子盒子的宽高的长度)/2
-          */
-          // let big = document.querySelector('.big')
-          // let small = document.querySelector('.small')
-  
-          // let bigW = big.offsetWidth
-          // let bigH = big.offsetHeight
-          
-          // let smallW = small.offsetWidth
-          // let smallH = small.offsetHeight
-  
-          // small.style.left = ( bigW - smallW)/2 + 'px';
-          // small.style.top = ( bigH - smallH)/2 + 'px';
-      </script>
-  </body>
-  
-  </html>
-  ```
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .small{
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }        */
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="small">
 
-  
+        </div>
+    </div>
+    <script>
+        /* 
+            Javascript方式: 
+            获取父盒子、子盒子的宽高，再使用定位，将子盒子定位到到中央:top、left均为(父盒子的宽高减去子盒子的宽高的长度)/2
+        */
+        // let big = document.querySelector('.big')
+        // let small = document.querySelector('.small')
+
+        // let bigW = big.offsetWidth
+        // let bigH = big.offsetHeight
+        
+        // let smallW = small.offsetWidth
+        // let smallH = small.offsetHeight
+
+        // small.style.left = ( bigW - smallW)/2 + 'px';
+        // small.style.top = ( bigH - smallH)/2 + 'px';
+    </script>
+</body>
+
+</html>
+```
+
+
 
 - ## CSS中的盒模型
 
