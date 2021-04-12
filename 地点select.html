@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <script src="./vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <select name="sheng" id="sheng" @change='change' >
+            <option selected>
+                请选择省
+            </option>
+            <option 
+                v-for="(item,index) in palace"
+                :key="index"
+                :value="item.value" 
+                >{{item.value}}
+            </option>
+        </select>
+        <select name="shi" id="shi">
+            <option selected>
+                请选择市
+            </option>
+            <option
+                v-for="(item,index) in childrenOptions"
+                :key="index"
+                :value="item.value"
+            >
+                {{item.value}}
+            </option>
+        </select>
+    </div>
+</body>
+</html>
+<script>
+    var vue = new Vue({
+        el:'#app',
+        data() {
+            return {
+                palace:[{
+                label: "11",
+                value: "北京市",
+                children: [{
+                        label: "110101",
+                        value: "东城区"
+                    }, {
+                        label: "110102",
+                        value: "西城区"
+                    }, {
+                        label: "110105",
+                        value: "朝阳区"
+                    }, {
+                        label: "110106",
+                        value: "丰台区"
+                }]
+            }, {
+                label: "12",
+                value: "天津市",
+                children: [{
+                        label: "120101",
+                        value: "和平区"
+                    }, {
+                        label: "120102",
+                        value: "河东区"
+                    }]
+            }],
+            childrenOptions:[]
+            }
+        },
+        methods: {
+            change:function(e){
+                const placeIndex = e.target.options.selectedIndex
+                this.$data.childrenOptions = this.$data.palace[placeIndex - 1].children
+            }
+        }
+        
+    })
+</script>
+<style scoped>
+    #app{
+        margin: 100px 100px;
+    }
+</style>

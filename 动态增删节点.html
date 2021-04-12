@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态增删节点</title>
+</head>
+<body>
+    <ul id="myul">
+        <li>1</li>
+        <li>2</li>
+        <li id='deleteLi'>需要删除的li</li>
+    </ul>
+    <button onclick="addNode()">增加节点</button>
+    <button onclick="deleteNode()">删除节点</button>
+</body>
+<script>
+    var ul = document.querySelector('#myul')
+    function addNode(){
+        var newli = document.createElement('li')
+        newli.id = '新增类'
+        newli.innerHTML = '这是一个新增节点'
+        ul.appendChild(newli)
+    }
+    function deleteNode(){
+        var deleteli = document.querySelector('#deleteLi')
+        ul.removeChild(deleteli)
+    }
+
+</script>
+</html>

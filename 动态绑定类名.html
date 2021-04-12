@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态绑定类名</title>
+    <script src="./vue.min.js"></script>
+</head>
+<body>
+    <div id='app'>
+        <p :class="{ newClass:isActive }">
+            {{content}}
+        </p>
+        <button @click='btn()'>增删类名</button>
+        <p :class="isRed ? 'newClass' : 'oldClass'">
+            {{change}}
+        </p>
+        <button @click='changeBtn()'>切换不同的类名</button>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data() {
+            return {
+                isActive:true,
+                isRed:true,
+                content:'动态绑定类名', 
+                change:'切换类名'
+            }
+        },
+        methods: {
+            btn(){
+                this.$data.isActive = !this.$data.isActive 
+            },
+            changeBtn(){
+                this.$data.isRed = !this.$data.isRed 
+            }
+        },
+    })
+</script>
+<style>
+    .newClass{
+        color: red;
+    }
+    .oldClass{
+        color: aqua;
+    }
+</style>
+</html>
