@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>截取数组</title>
+</head>
+<body>
+    截取数组的方法    
+</body>
+
+<script>
+window.onload = function(){
+    // `array.splice()`方法:arrayObject.splice(index,howmany,item1,.....,itemX)
+    // splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+    var spliceArray = [1,2,3,4,5,6,7,8]
+    var newArr = spliceArray.splice(1,3) // 从1开始，删除3个元素，并将删除的元素作为新数组返回 
+    console.log(newArr); // 结果：[2,3,4]
+    console.log('--------------');
+    // `slice()` 方法：array：返回一个索引和另一个索引之间的数据(不包括end值,不改变原数组)
+    var sliceArray = [1,2,3,4,5,6,7,8]
+    var newSliceArray = sliceArray.slice(1,4) // 返回一个index从1到4（不包括4）组成的新数组
+    console.log(newSliceArray); // 结果：[2,3,4]
+}
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call、bind、apply的区别</title>
+</head>
+<body>
+    call、bind、apply的区别
+</body>
+<script>
+        // 相同
+        // call、apply、bind都能修改this的指向
+window.onload = function(){
+        // 不同
+        // 1.bind修改之后不会立即执行
+        var obj = {
+            name:'我是内部obj',
+            age:18,
+            fo:function(){
+                console.log('姓名:' + this.name + ',年龄：' + this.age);
+            }
+        }
+        var newObj = {
+            name:'我是newObj',
+            age:250
+        }
+        var bindObj = {
+            name:'我是bindObj',
+            age:249
+        }
+        obj.fo() // 姓名:我是内部obj,年龄：18
+        obj.fo.call(newObj) //  姓名:我是newObj,年龄：250
+        obj.fo.apply(newObj) //  姓名:我是newObj,年龄：250
+        console.log('------------');
+        obj.fo.bind(bindObj) // 不输出,修改之后不会立即执行
+        obj.fo.bind(bindObj)() // 添加立即执行函数之后的结果： 姓名:我是bindObj,年龄：249
+        
+        // 2.apply()传递参数是以数组形式传递的
+        var object = {
+            name:'tom',
+            sex:'男',
+            learn:function(subject,secsubject){
+                console.log('姓名：' + this.name + ',性别：' + this.sex + ',正在学' + subject + '和' + secsubject );
+            }
+        }
+        var elseObject = {
+            name:'Mary',
+            sex:'女'
+        }
+        object.learn('java') // 姓名:tom,性别：男,正在学java
+        object.learn.call(elseObject,'javascript','C')  // 姓名：Mary,性别：女,正在学javascript和C
+        object.learn.apply(elseObject,['微信小程序','Node.js']) // 姓名：Mary,性别：女,正在学微信小程序和Node.js
+        console.log(object.learn.bind(elseObject,['Go','C#'])); 
+        /*
+            ƒ (subject,secsubject){
+                console.log('姓名：' + this.name + ',性别：' + this.sex + ',正在学' + subject + '和' + secsubject );
+            }
+        */
+       object.learn.bind(elseObject,['Go','C#'],['还有MySql'])()
+       // call、bind、apply.html:45 姓名：Mary,性别：女,正在学Go,C#和还有MySql
+    }
+</script>
+</html>

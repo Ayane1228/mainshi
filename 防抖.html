@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS input 防抖</title>
+</head>
+<body>
+    <!-- 输入框只在input框提起后1s输出全部内容 -->
+    <input type="text" id='input'>
+</body>
+<script>
+    var input = document.getElementById('input')
+    // function debounce(delay,value){
+    //     let timer
+    //     // 此时timer为undefined,因此该函数无效
+    //     clearTimeout(timer)
+    //     timer = setTimeout(() => {
+    //         console.log(value)
+    //     }, delay);
+    // }
+    function debounce(delay){
+    let timer
+    return function (value){
+        clearTimeout(timer)
+        timer = setTimeout( (value) => {
+            console.log(value)
+            }, delay);
+        }
+    }
+
+    var debounceFunc = debounce(1000)
+
+    input.addEventListener('keyup',function(e){
+        debounceFunc(e.target.value)
+    })
+    </script>
+</html>

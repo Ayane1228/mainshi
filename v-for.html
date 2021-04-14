@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for问题</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in arr" :key="item.id">
+                {{item.data}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script>
+    window.onload = function(){
+        var vue = new Vue({
+            el:'#app',
+            data() {
+                return {
+                    arr:[
+                        {
+                            id:1,
+                            data:'happy'
+                        },
+                        {
+                            id:2,
+                            data:'sad'
+                        },
+                        {
+                            id:3,
+                            data:'bad'
+                        },
+                        {
+                            id:4,
+                            data:'good'
+                        }
+                    ]    
+                }
+            },
+        })
+    }
+</script>
+</html>
