@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chunk函数</title>
+</head>
+<body>
+    
+<script>
+    window.onload = function(){
+    function chunk(arr, size) {
+        var newArr = [];
+        // 循环次数：arr.length/size,(新数组中的小数组个数)
+        for(var i=0;i<arr.length/size;i++){
+            // arr.slice(开始位置,结束位置(不包括结束位置))，截取个数为两者相减即size,开始位置：
+            newArr.push(arr.slice(i*size,size*(i+1)));
+        }
+        return newArr;
+    }
+/**
+ * @param input
+ * @param size
+ * @returns {Array}
+ */
+//  chunk(['a', 'b', 'c', 'd'], 2)
+// // => [['a', 'b'], ['c', 'd']]
+
+// chunk(['a', 'b', 'c', 'd'], 3)
+// // => [['a', 'b', 'c'], ['d']]
+
+// chunk(['a', 'b', 'c', 'd'], 5)
+// => [['a', 'b', 'c', 'd']]
+
+// chunk(['a', 'b', 'c', 'd'], 0)
+
+// // => []
+
+chunk(['a', 'b', 'c', 'd', 'e'], 2)
+// console.log(newArr);
+// // => [['a', 'b'], ['c', 'd'], ['e']]
+
+}
+
+</script>
+</body>
+</html>
